@@ -245,8 +245,8 @@ class InnerStickySection extends Component {
       const randomPositionTop = getRandomInt(viewportHeight);
       const randomPositionLeft = getRandomInt(viewportWidth);
       const positionLeft = randomPositionLeft + shredConfig.width > viewportWidth ? randomPositionLeft - (randomPositionLeft + shredConfig.width - viewportWidth) : randomPositionLeft;
-      // const positionTop = randomPositionTop + shredConfig.height > viewportHeight ? randomPositionTop - (randomPositionTop + shredConfig.height - viewportHeight) : randomPositionTop;
-      const positionTop = randomPositionTop;
+      const positionTop = randomPositionTop + shredConfig.height > viewportHeight ? randomPositionTop - (randomPositionTop + shredConfig.height - viewportHeight) : randomPositionTop;
+      // const positionTop = randomPositionTop;
       const title = data[i].title;
       result.push((
         <Shred
