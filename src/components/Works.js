@@ -1,7 +1,10 @@
-import { worksContent } from '../editor/text';
+import React from 'react';
 import styled from 'styled-components';
+import WorkPopup from './WorkPopup';
+import { worksContent } from '../editor/text';
 import config from '../config';
 const { breakpoints } = config;
+
 
 const Container = styled.div`
   margin-top: ${props => props.theme.sectionMargin};
@@ -62,7 +65,7 @@ const TitleStack = styled.div`
   }
   &: after {
     position: absolute;
-    top: 103%;
+    top: 120%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 18px;
@@ -96,34 +99,113 @@ const LearnMore = styled.div`
   }
 `;
 
+const PopupContentWrapper = styled.div`
+  width: 600px;
+  height: 90%;
+  background-color: white;
+  z-index: ${props => props.ifOpen ? '1' : '0'};
+  position: relative;
+`;
 
-function Works () {
-  const Contents =  worksContent.map((entity, index) => {
-    const { thumbnail, title, skillStack } = entity;
-    return (
-      <WorkContainer
-        thumbnail={thumbnail}
+
+class Works extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ifShowPopup: null,
+      popupContent: {},
+    }
+    this.showPopup = this._showPopup.bind(this);
+    this.hidePopup = this._hidePopup.bind(this);
+  }
+
+  _showPopup(popupContent) {
+    if (document) {
+      document.body.style.overflow = 'hidden';
+    }
+    this.setState({
+      ifShowPopup: true,
+      popupContent,
+    })
+  }
+
+  _hidePopup() {
+    if (document) {
+      document.body.style.overflow = 'scroll';
+    }
+    this.setState({
+      ifShowPopup: false,
+      popupContent: {},
+    })
+  }
+
+  _renderPopop() {
+    const { ifShowPopup, popupContent } = this.state
+    // if (!ifShowPopup) {
+    //   return null;
+    // }
+    const {
+      title,
+      subTitle,
+      imgUrls
+    } = popupContent
+    const content = (
+      <PopupContentWrapper
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       >
-        <Mask>
-          <TitleStack
-            skillStack={skillStack}
-          >
-            {title}
-          </TitleStack>
-          <LearnMore>Learn More</LearnMore>
-        </Mask>
-      </WorkContainer>
+        <div onClick={this.hidePopup}>close</div>
+        <div>{title}</div>
+        <div>{subTitle}</div>
+        <div>{imgUrls}</div>
+      </PopupContentWrapper>
+    )
+    return (
+      <WorkPopup
+        content={content}
+        hidePopup={this.hidePopup}
+        ifShowPopup={ifShowPopup}
+      />
     );
-  })
+  }
 
-  return (
-    <Container>
-      <h2 style={{ textAlign: 'center' }}>Works</h2>
-      <ContentWrapper>
-        {Contents}
-      </ContentWrapper>
-    </Container>
-  )
+  render() {
+    const Contents =  worksContent.map((entity, index) => {
+      const { thumbnail, title, skillStack, imgUrls, subTitle } = entity;
+      return (
+        <WorkContainer
+          thumbnail={thumbnail}
+        >
+          <Mask>
+            <TitleStack
+              skillStack={skillStack}
+            >
+              {title}
+            </TitleStack>
+            <LearnMore
+              onClick={() => {
+                this.showPopup({
+                  title,
+                  subTitle,
+                  imgUrls
+                })
+              }}
+            >Learn More</LearnMore>
+          </Mask>
+        </WorkContainer>
+      );
+    });
+    return (
+      <Container>
+        <h2 style={{ textAlign: 'center' }}>Works</h2>
+        <ContentWrapper>
+          {Contents}
+        </ContentWrapper>
+        {this._renderPopop()}
+      </Container>
+    );
+  }
 }
 
 export default Works;

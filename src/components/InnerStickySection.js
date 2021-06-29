@@ -121,12 +121,15 @@ class InnerStickySection extends Component {
   }
 
   _scrollHandler() {
-    if (!document) {
+    if (!document || !window) {
       return;
     }
     const scrollDirection = window.scrollY - this.currentScrollTop > 0 ? 'down' : 'up';
     const landingElement = document.getElementById('Landing');
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (!landingElement) {
+      return;
+    }
     const landingHeight = landingElement.offsetHeight - viewportHeight;
     const landingDistanceBottomToBottom = landingElement.getBoundingClientRect().bottom - viewportHeight;
     const heightPercentage = (() => {
@@ -269,7 +272,6 @@ class InnerStickySection extends Component {
   }
 
   render() {
-    console.log('render!!')
     return (
       <Container
         ref={node => {
