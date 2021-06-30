@@ -22,7 +22,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   p {
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 130%;
     color: ${props => props.theme.contentColor};
   }
 
@@ -42,6 +43,19 @@ const GlobalStyle = createGlobalStyle`
     @media(max-width: ${breakpoints.maxTablet}px) {
       font-size: 28px;
     }
+  }
+
+  h3 {
+    color: ${props => props.theme.headerColor};
+    font-size: 28px;
+    line-height: 130%;
+    @media(max-width: ${breakpoints.maxTablet}px) {
+      font-size: 24px;
+    }
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import WorkPopup from './WorkPopup';
+import Popup from './Popup';
+import WorkPopupContent from './WorkPopupContent';
 import { worksContent } from '../editor/text';
 import config from '../config';
 const { breakpoints } = config;
@@ -32,7 +33,7 @@ const WorkContainer = styled.div`
   background-image: url("${props => props.thumbnail}");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: ${props => props.backgroundSize || 'contain'};
 `
 
 
@@ -147,22 +148,22 @@ class Works extends React.Component {
     const {
       title,
       subTitle,
-      imgUrls
+      imgUrls,
+      introduction,
+      href
     } = popupContent
     const content = (
-      <PopupContentWrapper
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <div onClick={this.hidePopup}>close</div>
-        <div>{title}</div>
-        <div>{subTitle}</div>
-        <div>{imgUrls}</div>
-      </PopupContentWrapper>
-    )
+      <WorkPopupContent
+        hidePopup={this.hidePopup}
+        title={title}
+        subTitle={subTitle}
+        imgUrls={imgUrls}
+        introduction={introduction}
+        href={href}
+      />
+    );
     return (
-      <WorkPopup
+      <Popup
         content={content}
         hidePopup={this.hidePopup}
         ifShowPopup={ifShowPopup}
@@ -172,10 +173,11 @@ class Works extends React.Component {
 
   render() {
     const Contents =  worksContent.map((entity, index) => {
-      const { thumbnail, title, skillStack, imgUrls, subTitle } = entity;
+      const { thumbnail, title, skillStack, imgUrls, subTitle, introduction, href, backgroundSize  } = entity;
       return (
         <WorkContainer
           thumbnail={thumbnail}
+          backgroundSize={backgroundSize}
         >
           <Mask>
             <TitleStack
@@ -188,7 +190,10 @@ class Works extends React.Component {
                 this.showPopup({
                   title,
                   subTitle,
-                  imgUrls
+                  imgUrls,
+                  introduction,
+                  href,
+                  backgroundSize
                 })
               }}
             >Learn More</LearnMore>
