@@ -2,6 +2,7 @@ import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import Landing from './components/Landing';
 import Navigation from './components/Navigation';
 import Works from './components/Works';
+import Contact from './components/Contact';
 import config from './config';
 const { breakpoints } = config
 
@@ -57,6 +58,8 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  input, textarea, button {font-family: inherit}
 `;
 
 const Container = styled.div`
@@ -81,6 +84,7 @@ function App() {
         <ContentWrapper>
           <Navigation />
           <Works />
+          <Contact />
         </ContentWrapper>
       </Container>
       <GlobalStyle />

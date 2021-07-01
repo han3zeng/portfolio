@@ -9,8 +9,9 @@ const { breakpoints } = config;
 
 const Container = styled.div`
   margin-top: ${props => props.theme.sectionMargin};
-  padding: 0 ${props => props.theme.pageMargin};
+  padding: 50px ${props => props.theme.pageMargin};
   box-sizing: border-box;
+  background-color: #F7F7F7;
 `;
 
 const ContentWrapper = styled.div`
@@ -29,7 +30,7 @@ const ContentWrapper = styled.div`
 
 const WorkContainer = styled.div`
   height: 300px;
-  background-color: #F7F7F7;
+  background-color: white;
   background-image: url("${props => props.thumbnail}");
   background-repeat: no-repeat;
   background-position: center;
@@ -42,7 +43,7 @@ const Mask = styled.div`
   height: 100%;
   opacity: 0;
   transition: opacity .3s ease-in-out;
-  background-color: white;
+  background-color: #F7F7F7;
   position: relative;
   &:hover {
     opacity: 1;
@@ -203,7 +204,7 @@ class Works extends React.Component {
     });
     return (
       <Container>
-        <h2 style={{ textAlign: 'center' }}>Works</h2>
+        <h2 style={{ textAlign: 'center', marginTop: '0px' }}>Works</h2>
         <ContentWrapper>
           {Contents}
         </ContentWrapper>
