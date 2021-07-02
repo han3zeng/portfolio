@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import { SectionContainer } from './Commons';
 
 const Container = styled.div`
-  padding: 0 ${props => props.theme.pageMargin};
-  box-sizing: border-box;
   max-width: 600px;
-  margin: ${props => props.theme.sectionMargin} auto 50px auto;
+  margin: 0 auto;
 `;
 
 const InputBase = styled.input`
@@ -65,26 +64,30 @@ const Button = styled.input`
 
 function Contact () {
   return (
-    <Container>
-      <h2 style={{ textAlign: 'center' }}>Contact</h2>
-      <form form action="mailto:hanyutseng.hyt@gmail.com" method="post" enctype="text/plain">
-        <InputBase
-          type="text"
-          placeholder="Your Name"
-          name="name"
-        />
-        <InputBase
-          type="email"
-          placeholder="Your Email"
-          name="mail"
-        />
-        <Message
-          placeholder="Your Message"
-          name="message"
-        />
-        <Button type="submit" value="Submit" />
-      </form>
-    </Container>
+    <SectionContainer
+      isWhite
+    >
+      <Container>
+        <h2 style={{ textAlign: 'center' }}>Contact</h2>
+        <form form action="mailto:hanyutseng.hyt@gmail.com" method="post" enctype="text/plain">
+          <InputBase
+            type="text"
+            placeholder="Your Name"
+            name="name"
+          />
+          <InputBase
+            type="email"
+            placeholder="Your Email"
+            name="mail"
+          />
+          <Message
+            placeholder="Your Message"
+            name="message"
+          />
+          <Button type="submit" value="Submit" />
+        </form>
+      </Container>
+    </SectionContainer>
   );
 }
 

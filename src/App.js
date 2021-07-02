@@ -3,6 +3,7 @@ import Landing from './components/Landing';
 import Navigation from './components/Navigation';
 import Works from './components/Works';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 import config from './config';
 const { breakpoints } = config
 
@@ -39,11 +40,12 @@ const GlobalStyle = createGlobalStyle`
 
   h2 {
     color: ${props => props.theme.headerColor};
-    font-size: 36px;
+    font-size: 44px;
     line-height: 130%;
     @media(max-width: ${breakpoints.maxTablet}px) {
-      font-size: 28px;
+      font-size: 30px;
     }
+    margin-bottom: 2em;
   }
 
   h3 {
@@ -62,13 +64,6 @@ const GlobalStyle = createGlobalStyle`
   input, textarea, button {font-family: inherit}
 `;
 
-const Container = styled.div`
-  margin: 0 auto;
-  width: 100%;
-  max-width: 1440px;
-  position: relative;
-  z-index: 1;
-`
 
 const ContentWrapper = styled.div`
   position: relative;
@@ -79,14 +74,13 @@ function App() {
     <ThemeProvider
       theme={theme}
     >
-      <Container>
-        <Landing />
-        <ContentWrapper>
-          <Navigation />
-          <Works />
-          <Contact />
-        </ContentWrapper>
-      </Container>
+      <Landing />
+      <ContentWrapper>
+        <Navigation />
+        <Works />
+        <Contact />
+        <Footer />
+      </ContentWrapper>
       <GlobalStyle />
     </ThemeProvider>
   );

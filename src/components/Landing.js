@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import InnerStickySection from './InnerStickySection';
 import { landingContent } from '../editor/text';
 import config from '../config';
+import { SectionContainer } from './Commons';
 
 const { title, contents } = landingContent;
 const { breakpoints } = config;
@@ -102,19 +103,23 @@ class Landing extends PureComponent {
 
   render() {
     return (
-      <Container
-        id="Landing"
+      <SectionContainer
+        isWhite
       >
-        <TitleWrapper>
-          <Title dangerouslySetInnerHTML={createMarkup(title)} />
-        </TitleWrapper>
-        <InnerStickySection>
-        </InnerStickySection>
-        {/*<LandingTitle dangerouslySetInnerHTML={createMarkup(title)} />*/}
-        <div>
-          {this._renderContent()}
-        </div>
-      </Container>
+        <Container
+          id="Landing"
+        >
+          <TitleWrapper>
+            <Title dangerouslySetInnerHTML={createMarkup(title)} />
+          </TitleWrapper>
+          <InnerStickySection>
+          </InnerStickySection>
+          {/*<LandingTitle dangerouslySetInnerHTML={createMarkup(title)} />*/}
+          <div>
+            {this._renderContent()}
+          </div>
+        </Container>
+      </SectionContainer>
     );
   }
 }

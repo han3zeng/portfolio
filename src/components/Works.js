@@ -2,17 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Popup from './Popup';
 import WorkPopupContent from './WorkPopupContent';
+import { SectionContainer } from './Commons';
 import { worksContent } from '../editor/text';
 import config from '../config';
 const { breakpoints } = config;
 
-
-const Container = styled.div`
-  margin-top: ${props => props.theme.sectionMargin};
-  padding: 50px ${props => props.theme.pageMargin};
-  box-sizing: border-box;
-  background-color: #F7F7F7;
-`;
 
 const ContentWrapper = styled.div`
   display: grid;
@@ -20,7 +14,6 @@ const ContentWrapper = styled.div`
   grid-gap: 10px;
   @media (min-width: ${breakpoints.minTablet}px) {
     grid-template-columns: auto auto;
-
   }
   @media (min-width: ${breakpoints.minDesktop}px) {
     grid-template-columns: auto auto auto;
@@ -203,13 +196,13 @@ class Works extends React.Component {
       );
     });
     return (
-      <Container>
-        <h2 style={{ textAlign: 'center', marginTop: '0px' }}>Works</h2>
+      <SectionContainer>
+        <h2 style={{ textAlign: 'center' }}>Works</h2>
         <ContentWrapper>
           {Contents}
         </ContentWrapper>
         {this._renderPopop()}
-      </Container>
+      </SectionContainer>
     );
   }
 }
