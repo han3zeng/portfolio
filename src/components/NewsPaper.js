@@ -27,6 +27,7 @@ const Divider = styled.div`
 
 const Title = styled.div`
   font-size: 8px;
+  margin-bottom: 5px;
 `
 
 const Content = styled.div`
@@ -43,24 +44,23 @@ const LineContainer = styled.div`
   justify-content: space-between;
   flex: 1 1 33%;
   box-sizing: border-box;
-  padding: 0 6px;
 `
 
 const Line = styled.div`
-  width: 100%;
-  height: 2px;
+  width: 90%;
+  height: 1px;
   background: black;
 `
 
 const Img = styled.div`
-  border: 2px solid black;
+  border: 1px solid black;
   flex: 1 1 33%;
 `;
 
 function Text() {
   const Lines = (() => {
     const tmp = [];
-    for (let i = 0 ; i < 6 ; i++) {
+    for (let i = 0 ; i < 10 ; i++) {
       tmp.push(<Line key={i} />)
     }
     return tmp;

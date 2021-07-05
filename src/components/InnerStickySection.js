@@ -4,8 +4,8 @@ import { getRandomInt, weightedRandomInt, getDimension } from '../utils';
 import _debounce from 'lodash/debounce';
 import NewsPaper from './NewsPaper';
 
-const MAX_DESKTOP = 8;
-const MAX_TABLET = 6;
+const MAX_DESKTOP = 10;
+const MAX_TABLET = 7;
 const MAX_MOBILE = 5;
 
 const DEFAULT_NUMBER_OF_SHREDS = 0;
@@ -36,37 +36,37 @@ const Shred = styled.div`
 
 const shredConfigs = [
   {
-    width: 419,
-    height: 410,
+    width: 250,
+    height: 240,
     weight: 0.05,
   },
   {
-    width: 159,
-    height: 150,
+    width: 230,
+    height: 220,
     backgroundColor: 'yellow',
     weight: 0.05,
   },
   {
-    width: 159,
-    height: 150,
+    width: 200,
+    height: 190,
     backgroundColor: 'purple',
     weight: 0.1,
   },
   {
-    width: 159,
-    height: 150,
+    width: 190,
+    height: 180,
     backgroundColor: 'green',
     weight: 0.2,
   },
   {
-    width: 159,
+    width: 160,
     height: 150,
     backgroundColor: 'gray',
     weight: 0.3,
   },
   {
-    width: 159,
-    height: 150,
+    width: 140,
+    height: 130,
     backgroundColor: 'red',
     weight: 0.3,
   }
@@ -243,7 +243,7 @@ class InnerStickySection extends Component {
       const randomNumber = getRandomNumber();
       const shredConfig = shredConfigs[randomNumber];
       const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      const viewportWidth = (window.innerWidth || document.documentElement.clientWidth) - 20;
+      const viewportWidth = (window.innerWidth || document.documentElement.clientWidth) <= 1440 ? (window.innerWidth || document.documentElement.clientWidth) - 20 : 1440 - 20;
       const randomPositionTop = getRandomInt(viewportHeight);
       const randomPositionLeft = getRandomInt(viewportWidth);
       const positionLeft = randomPositionLeft + shredConfig.width > viewportWidth ? randomPositionLeft - (randomPositionLeft + shredConfig.width - viewportWidth) : randomPositionLeft;

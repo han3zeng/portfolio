@@ -88,6 +88,7 @@ class Landing extends PureComponent {
   render() {
     return (
       <SectionContainer
+        witoutPadding
         isWhite
         id="home"
       >

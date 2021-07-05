@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.section`
-  padding: ${props => props.theme.sectionMargin} ${props => props.theme.pageMargin};
+  padding: ${props => props.witoutPadding ? '0' :  `${props.theme.sectionMargin} ${props.theme.pageMargin}`};
   box-sizing: border-box;
-  background-color: ${props => props.isWhite ? 'white`' : '#F7F7F7'};
+  background-color: ${props => props.isWhite ? 'white' : '#F7F7F7'};
 `
 
 const ContentWrapper= styled.div`
@@ -19,9 +19,10 @@ const Divider = styled.div`
 `;
 
 function SectionContainer (props) {
-  const { children, isWhite, withBorder, id } = props;
+  const { children, isWhite, withBorder, id, witoutPadding } = props;
   return (
     <Container
+      witoutPadding={witoutPadding}
       isWhite={isWhite}
       id={id || undefined}
     >
