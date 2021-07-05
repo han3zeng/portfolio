@@ -70,7 +70,7 @@ function Contact () {
     >
       <Container>
         <h2 style={{ textAlign: 'center' }}>Contact</h2>
-        <form form action="mailto:hanyutseng.hyt@gmail.com" method="post" enctype="text/plain">
+        <form action="mailto:hanyutseng.hyt@gmail.com" method="post" encType="text/plain">
           <InputBase
             type="text"
             placeholder="Your Name"

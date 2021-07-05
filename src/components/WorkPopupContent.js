@@ -117,7 +117,7 @@ const Button = styled.div`
   align-items: center;
   cursor: pointer;
   span {
-    margin-right: 2px;
+    margin-right: 1px;
     display: inline-block;
   }
   &:hover {
@@ -173,7 +173,7 @@ function WorkPopupContent({
       </Row>
       <Divider />
       <ImgWrapper>
-        <img src={imgUrls && imgUrls[0]} />
+        <img src={imgUrls && imgUrls[0]} alt={`${title}'s snapshot'`} />
       </ImgWrapper>
       <p>{introduction}</p>
       <Divider />
@@ -192,7 +192,7 @@ function WorkPopupContent({
               <span>i</span>
               <span>t</span>
             </div>
-            <img src={openInNew} />
+            <img src={openInNew} alt="open in new tab icon" />
           </Button>
         </a>
       </Row>

@@ -61,7 +61,7 @@ function Text() {
   const Lines = (() => {
     const tmp = [];
     for (let i = 0 ; i < 6 ; i++) {
-      tmp.push(<Line />)
+      tmp.push(<Line key={i} />)
     }
     return tmp;
   })();

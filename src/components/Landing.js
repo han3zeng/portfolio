@@ -26,22 +26,6 @@ const Title = styled.h1`
   }
 `
 
-const LandingTitle = styled.h1`
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 680px;
-  transform: translate(-50%, -50%);
-  @media(max-width: ${breakpoints.maxTablet}px) {
-    width: 510px;
-  }
-  @media(max-width: ${breakpoints.maxiPhone}px) {
-    max-width: 90%;
-    white-space: normal;
-  }
-`;
-
 const ContentSection = styled.div`
   height: 100vh;
   position: relative;

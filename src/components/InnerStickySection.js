@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { getRandomInt, weightedRandomInt, getDimension } from '../utils';
 import _debounce from 'lodash/debounce';
-import { landingContent } from '../editor/text';
 import NewsPaper from './NewsPaper';
 
 const MAX_DESKTOP = 8;
@@ -228,10 +227,10 @@ class InnerStickySection extends Component {
     })();
     for(let i = 0 ; i < maxNumber ; i++) {
       // const randomNumber = getRandomInt(6);
-      const imgUrl = (() => {
-        const target = i % landingContent.imgs.length;
-        return landingContent.imgs[target];
-      })();
+      // const imgUrl = (() => {
+      //   const target = i % landingContent.imgs.length;
+      //   return landingContent.imgs[target];
+      // })();
       const Spec = {
         0: shredConfigs[0].weight,
         1: shredConfigs[1].weight,

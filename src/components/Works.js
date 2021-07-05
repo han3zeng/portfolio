@@ -94,14 +94,6 @@ const LearnMore = styled.div`
   }
 `;
 
-const PopupContentWrapper = styled.div`
-  width: 600px;
-  height: 90%;
-  background-color: white;
-  z-index: ${props => props.ifOpen ? '1' : '0'};
-  position: relative;
-`;
-
 
 class Works extends React.Component {
   constructor(props) {
@@ -167,11 +159,12 @@ class Works extends React.Component {
 
   render() {
     const Contents =  worksContent.map((entity, index) => {
-      const { thumbnail, title, skillStack, imgUrls, subTitle, introduction, href, backgroundSize  } = entity;
+      const { thumbnail, title, skillStack, imgUrls, subTitle, introduction, href, backgroundSize, id  } = entity;
       return (
         <WorkContainer
           thumbnail={thumbnail}
           backgroundSize={backgroundSize}
+          key={id}
         >
           <Mask>
             <TitleStack
