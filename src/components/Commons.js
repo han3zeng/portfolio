@@ -19,10 +19,11 @@ const Divider = styled.div`
 `;
 
 function SectionContainer (props) {
-  const { children, isWhite, withBorder } = props;
+  const { children, isWhite, withBorder, id } = props;
   return (
     <Container
       isWhite={isWhite}
+      id={id || undefined}
     >
       {withBorder && <Divider />}
       <ContentWrapper>

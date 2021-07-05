@@ -196,8 +196,10 @@ class Works extends React.Component {
       );
     });
     return (
-      <SectionContainer>
-        <h2 style={{ textAlign: 'center' }}>Works</h2>
+      <SectionContainer
+        id="portfolio"
+      >
+        <h2 style={{ textAlign: 'center' }}>Portfolio</h2>
         <ContentWrapper>
           {Contents}
         </ContentWrapper>

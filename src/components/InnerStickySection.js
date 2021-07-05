@@ -120,7 +120,7 @@ class InnerStickySection extends Component {
     }
   }
 
-  _scrollHandler() {
+  _scrollHandler(e) {
     if (!document || !window) {
       return;
     }

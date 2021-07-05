@@ -18,6 +18,10 @@ const theme = {
 };
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     font-family: ${props => props.theme.fontFamily};

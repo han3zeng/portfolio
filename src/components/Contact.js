@@ -66,6 +66,7 @@ function Contact () {
   return (
     <SectionContainer
       isWhite
+      id="contact"
     >
       <Container>
         <h2 style={{ textAlign: 'center' }}>Contact</h2>

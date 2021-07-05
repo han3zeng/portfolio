@@ -105,6 +105,7 @@ class Landing extends PureComponent {
     return (
       <SectionContainer
         isWhite
+        id="home"
       >
         <Container
           id="Landing"

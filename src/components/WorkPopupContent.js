@@ -18,6 +18,7 @@ const PopupContentWrapper = styled.div`
   max-width: 600px;
   width: 100%;
   height: 90%;
+  max-height: 650px;
   background-color: white;
   position: relative;
   padding: 20px;
