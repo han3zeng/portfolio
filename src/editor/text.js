@@ -1,5 +1,10 @@
 import config from '../config';
 import twReporterLogo from '../assets/tw-reporter-logo.png';
+import twReporterOG from '../assets/tw-reporter-og.jpg';
+import hanRecallLanding from '../assets/han-recall-landing.png';
+import revengePornLanding from '../assets/revenge-porn-landing.png'
+import taiwaneseLaborLanding from '../assets/taiwanese-labor-landing.png';
+import covid19ChinLockdown from '../assets/covid-19-china-lockdown.png'
 import pro360Img from '../assets/pro-360-img.png';
 const { cdnUrlBase } = config;
 
@@ -27,7 +32,7 @@ const worksContent = [
     subTitle: 'Taiwan non government organization official website',
     skillStack: 'Node / React / Redux / Git',
     thumbnail: twReporterLogo,
-    imgUrls: ['https://www.twreporter.org/images/og-image-large.jpg'],
+    imgUrls: [twReporterOG],
     withPadding: true,
     introduction: `twreporter.org is a Taiwanese news website. The site offers news, in-depth report and covers politics, environment, culture, women's interesets, Cross-strait relations, etc.`,
     href: 'https://www.twreporter.org/',
@@ -58,16 +63,52 @@ const worksContent = [
   },
   {
     id: 3,
-    title: 'This is the Project',
-    subTitle: 'This is subtitle',
-    skillStack: 'Node, React',
-    thumbnail: twReporterLogo,
-    imgUrls: ['https://www.twreporter.org/images/og-image-large.jpg'],
+    title: '2020 Kaohsiung Mayoral Recall Vote',
+    subTitle: 'The special report made by Taiwan Public Television Service',
+    skillStack: 'React, AWS, GCP, Spreadsheet',
+    thumbnail: 'https://d3prffu8f9hpuw.cloudfront.net/recall-vote-han-kuo-yu/og-img.jpg',
+    imgUrls: [hanRecallLanding],
     withPadding: true,
-    introduction: `is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Why do we use it
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).`,
-href: 'https://www.twreporter.org/'
-  }
+    introduction: 'The 2020 Kaohsiung mayoral recall vote was a recall election held on 6 June 2020 to recall the incumbent mayor of Kaohsiung, Han Kuo-yu. The project offers a live report on recall result.',
+    href: 'https://hanrecall.pts.org.tw/',
+    backgroundSize: 'cover',
+  },
+  {
+    id: 4,
+    title: 'Covid-19 impact, Taiwanese Labour in China',
+    subTitle: 'The special report made by Taiwan Public Television Service',
+    skillStack: 'React, Styled-Components, light-house tuning',
+    thumbnail: 'https://d3prffu8f9hpuw.cloudfront.net/taiwanese-businessman/og-img.jpg',
+    imgUrls: [taiwaneseLaborLanding],
+    withPadding: true,
+    introduction: 'China reports zero new COVID-19 infection cases. Most Chinese companies are ready to reopen business. But are those Taiwanese employees willing to take the risk and travel back to China to work?',
+    href: 'https://newmedia.pts.org.tw/sub-chinaoutbreak-3-/',
+    backgroundSize: 'cover',
+  },
+  {
+    id: 5,
+    title: 'Revenge Porn Victims',
+    subTitle: 'The special report made by Taiwan Public Television Service',
+    skillStack: 'React, Styled-Components',
+    thumbnail: 'https://d3prffu8f9hpuw.cloudfront.net/revenge-porn/og-img.jpg',
+    imgUrls: [revengePornLanding],
+    withPadding: true,
+    introduction: 'Why some people can spread Nonconsensual Pornography with impunity? Why those Revenge Porns are illegal but still circulate online?',
+    href: 'https://newmedia.pts.org.tw/revenge-porn/',
+    backgroundSize: 'cover',
+  },
+  {
+    id: 6,
+    title: 'Covid-19 China Lockdown',
+    subTitle: 'The special report made by Taiwan Public Television Service',
+    skillStack: 'D3.js, React, Styled-Components',
+    thumbnail: 'https://newslab.pts.org.tw/static/images/open-image.png',
+    imgUrls: [covid19ChinLockdown],
+    withPadding: true,
+    introduction: 'The interaction map explains how covid-19 virus spread around the China, and the associated panel shows the related statistics.',
+    href: 'https://newmedia.pts.org.tw/sub-chinaoutbreak/',
+    backgroundSize: 'cover',
+  },
 ];
 
 
