@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Popup from './Popup';
 import WorkPopupContent from './WorkPopupContent';
 import { SectionContainer } from './Commons';
-import { worksContent } from '../editor/text';
+import { worksContent, sideProjectsContent } from '../editor/text';
 import config from '../config';
-const { breakpoints } = config;
+const { breakpoints, tags: tagsPrototye } = config;
 
 
 const ContentWrapper = styled.div`
@@ -65,7 +65,7 @@ const TitleStack = styled.div`
     transform: translateX(-50%);
     font-size: 18px;
     content: '${props => props.skillStack}';
-    color: #2E7265;
+    color: ${props => props.theme.tagColor};
     font-weight: 400;
   }
 `;
@@ -94,16 +94,42 @@ const LearnMore = styled.div`
   }
 `;
 
+const TagContainer = styled.div`
+  margin-bottom: 20px;
+`
+
+const Tag = styled.div`
+  color: ${props => props.theme.tagColor};
+  cursor: pointer;
+  border: 2px solid ${props => props.theme.tagColor};
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: 10px;
+  transition: box-shadow .3s ease-in-out;
+  color: ${props => props.highlight ? 'white' : props.theme.tagColor};
+  background-color: ${props => props.highlight ? props.theme.tagColor : 'transparent' };
+  &: hover {
+    box-shadow: 1px 2px 2px gray;
+  }
+  margin-bottom: 10px;
+`
+
 
 class Works extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       ifShowPopup: null,
+      tags: [],
       popupContent: {},
     }
     this.showPopup = this._showPopup.bind(this);
     this.hidePopup = this._hidePopup.bind(this);
+    this.onClickTag = this._onClickTag.bind(this);
   }
 
   _showPopup(popupContent) {
@@ -157,44 +183,89 @@ class Works extends React.Component {
     );
   }
 
-  render() {
-    const Contents =  worksContent.map((entity, index) => {
-      const { thumbnail, title, skillStack, imgUrls, subTitle, introduction, href, backgroundSize, id  } = entity;
+  _onClickTag(target) {
+    console.log('target: ', target)
+    this.setState((state, props) => {
+      const { tags } = state;
+      let result;
+      if (tags.indexOf(target) === -1) {
+        result = [...tags, target];
+      } else {
+        result = tags.filter(tag => tag !== target)
+      }
+      return {
+        tags: result,
+      }
+    })
+  }
+
+  _renderTags() {
+    const tagList = Object.keys(tagsPrototye);
+    const { tags } = this.state;
+    return tagList.map((tag) => {
       return (
-        <WorkContainer
-          thumbnail={thumbnail}
-          backgroundSize={backgroundSize}
-          key={id}
+        <Tag
+          key={tagsPrototye[tag]}
+          highlight={tags.indexOf(tagsPrototye[tag]) !== -1}
+          onClick={() => {
+            this._onClickTag(tagsPrototye[tag]);
+          }}
         >
-          <Mask>
-            <TitleStack
-              skillStack={skillStack}
-            >
-              {title}
-            </TitleStack>
-            <LearnMore
-              onClick={() => {
-                this.showPopup({
-                  title,
-                  subTitle,
-                  imgUrls,
-                  introduction,
-                  href,
-                  backgroundSize
-                })
-              }}
-            >Learn More</LearnMore>
-          </Mask>
-        </WorkContainer>
+          {tagsPrototye[tag]}
+        </Tag>
       );
     });
+  }
+
+  _renderContent(list) {
+    const { tags } = this.state;
+    return list.map((entity, index) => {
+      const { thumbnail, title, skillStack, imgUrls, subTitle, introduction, href, backgroundSize, id, tagSet  } = entity;
+      if (tags.some((element) => tagSet.has(element)) || tags.length === 0) {
+        return (
+          <WorkContainer
+            thumbnail={thumbnail}
+            backgroundSize={backgroundSize}
+            key={id}
+          >
+            <Mask>
+              <TitleStack
+                skillStack={skillStack}
+              >
+                {title}
+              </TitleStack>
+              <LearnMore
+                onClick={() => {
+                  this.showPopup({
+                    title,
+                    subTitle,
+                    imgUrls,
+                    introduction,
+                    href,
+                    backgroundSize
+                  })
+                }}
+              >Learn More</LearnMore>
+            </Mask>
+          </WorkContainer>
+        );
+      } else {
+        return null;
+      }
+    });
+  }
+
+  render() {
     return (
       <SectionContainer
         id="portfolio"
       >
         <h2 style={{ textAlign: 'center' }}>Portfolio</h2>
+        <TagContainer>
+          {this._renderTags()}
+        </TagContainer>
         <ContentWrapper>
-          {Contents}
+          {this._renderContent(worksContent)}
         </ContentWrapper>
         {this._renderPopop()}
       </SectionContainer>

@@ -34,7 +34,6 @@ function SectionContainer (props) {
   );
 }
 
-
 export {
   SectionContainer,
 };

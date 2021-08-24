@@ -4,10 +4,12 @@ import Navigation from './components/Navigation';
 import Works from './components/Works';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { worksContent, sideProjectsContent } from './editor/text';
 import config from './config';
 const { breakpoints } = config
 
 const theme = {
+  tagColor: '#2E7265',
   buttonColor: '#326891',
   sectionMargin: '68px',
   pageMargin: '20px;',
@@ -54,7 +56,7 @@ const GlobalStyle = createGlobalStyle`
 
   h3 {
     color: ${props => props.theme.headerColor};
-    font-size: 28px;
+    font-size: 32px;
     line-height: 130%;
     @media(max-width: ${breakpoints.maxTablet}px) {
       font-size: 24px;
@@ -81,7 +83,11 @@ function App() {
       <Landing />
       <ContentWrapper>
         <Navigation />
-        <Works />
+        <Works
+          title={'Works'}
+          isWhite={false}
+          list={worksContent}
+        />
         <Contact />
         <Footer />
       </ContentWrapper>
