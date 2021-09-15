@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styled from 'styled-components';
-import Popup from './Popup';
-import WorkPopupContent from './WorkPopupContent';
+// import Popup from './Popup';
+// import WorkPopupContent from './WorkPopupContent';
 import { SectionContainer } from './Commons';
-import { worksContent, sideProjectsContent } from '../editor/text';
+import { worksContent } from '../editor/text';
 import config from '../config';
 const { breakpoints, tags: tagsPrototye } = config;
+const Popup = React.lazy(() => import(/* webpackPrefetch: true */'./Popup'));
+const WorkPopupContent = React.lazy(() => import(/* webpackPrefetch: true */'./WorkPopupContent'));
 
 
 const ContentWrapper = styled.div`
@@ -154,9 +156,9 @@ class Works extends React.Component {
 
   _renderPopop() {
     const { ifShowPopup, popupContent } = this.state
-    // if (!ifShowPopup) {
-    //   return null;
-    // }
+    if (!ifShowPopup) {
+      return null;
+    }
     const {
       title,
       subTitle,
@@ -175,11 +177,13 @@ class Works extends React.Component {
       />
     );
     return (
-      <Popup
-        content={content}
-        hidePopup={this.hidePopup}
-        ifShowPopup={ifShowPopup}
-      />
+      <Suspense fallback={null}>
+        <Popup
+          content={content}
+          hidePopup={this.hidePopup}
+          ifShowPopup={ifShowPopup}
+        />
+      </Suspense>
     );
   }
 
