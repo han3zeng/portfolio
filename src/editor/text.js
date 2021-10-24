@@ -5,8 +5,8 @@ import hanRecallLanding from '../assets/han-recall-landing.png';
 import revengePornLanding from '../assets/revenge-porn-landing.png'
 import taiwaneseLaborLanding from '../assets/taiwanese-labor-landing.png';
 import covid19ChinLockdown from '../assets/covid-19-china-lockdown.png'
-import dashboardLadning from '../assets/dashboard-landing.svg';
-import dashboard from '../assets/dashboard.svg';
+import blogServiceLanding from '../assets/blog-service-landing.png';
+import blogService from '../assets/blog-service.jpg';
 import pro360Img from '../assets/pro-360-img.png';
 const { cdnUrlBase, tags } = config;
 
@@ -147,13 +147,13 @@ const worksContent = [
   },
   {
     id: 7,
-    title: 'Dashbaord Side Project',
-    subTitle: 'Implement a token-based sign-in system',
+    title: 'Side Project: Blog',
+    subTitle: 'I practice interesting web dev skill on this project',
     skillStack: 'React / OAuth2 / Express / Docker / GCP',
-    thumbnail: dashboard,
-    imgUrls: [dashboardLadning],
+    thumbnail: blogService,
+    imgUrls: [blogServiceLanding],
     withPadding: true,
-    introduction: 'The authorization and authentication system that based on OAuth 2.0.',
+    introduction: 'The blog service includes the authorization and authentication system that based on OAuth 2.0.',
     href: 'https://react-playground-7kgn6zbeya-uc.a.run.app/',
     backgroundSize: 'contain',
     tagSet: new Set([
